@@ -1,0 +1,39 @@
+import re 
+f = {'0':'ноль', '1' : "один", '2': "два", '3': "три", '4':"четыре", '5':"пять", '6':"шесть", '7' : "семь", '8':"восемь", '9':"девять"}
+i = 0
+k = 0
+d_max = 0
+s_max = ''
+PATTERN = r'(?<!\d)11\d*'
+matches1 = ''
+with open("test.txt", "r") as f:
+	test_txt = f.readlines()
+whole_txt = "".join(test_txt)
+matches = re.findall(PATTERN, whole_txt)
+print(len(matches[0]))
+while i < (len(matches) ):
+    
+    while k < (len(matches[i])-1):
+        
+        if matches[i][k+1] != matches[i][k]:
+            matches1+= (matches[i][k] + '0'*(len(matches[i]) - 1))
+            k+=1
+            
+        else:
+            matches1+=matches[i][k]
+            k+=1
+    if matches[i][-1] == '1':
+        matches1 += '11'
+    elif matches[i][-1] != '1':
+        matches1 += matches[i][-1] + ('0'*(len(matches[i]) - 1) + '1')
+    print(matches[i],' - ', matches1[1:])
+    d = int(matches[i])
+    if d > d_max:
+        d_max=d
+        s_max = matches1
+    i+=1
+    k=0
+    matches1 = ''
+r = '111'
+print(f['1'])
+c = 0
