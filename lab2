@@ -5,7 +5,7 @@ i = 0
 k = 0
 d_max = 0
 s_max = ''
-PATTERN = r'(?<!\d)11\d*'
+PATTERN = r'\b11\d*\b'
 matches1 = ''
 with open("test.txt", "r") as f:
 	test_txt = f.readlines()
